@@ -33,6 +33,8 @@ services:
       - backend
     depends_on:
       - db
+    environment:
+      DATABASE_HOST: 'db'
   proxy:
     image: nginx:latest
     volumes:

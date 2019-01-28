@@ -7,7 +7,7 @@ if (!port) {
     port = 8888;
 }
 var connection = mysql.createConnection({
-	host: 'db',
+	host: process.env.DATABASE_HOST,
 	user: 'notes-api',
 	password: 'notes-api'
 });
