@@ -1,0 +1,24 @@
+---
+- hosts: baseline
+  tasks:
+  - name: upgrade all packages
+    yum:
+      name: git
+      state: latest
+
+- hosts: webapp
+  roles:
+    - geerlingguy.nginx
+    - geerlingguy.nodejs
+  vars:
+    
+
+- hosts: database
+  become: yes
+  roles:
+    - geerlingguy.mysql
+  vars:
+    mysql_user_home: /root
+    mysql_user_name: 'notes-api'
+    mysql_user_password: 'notes-api'
+    mysql_root_password_update: false
