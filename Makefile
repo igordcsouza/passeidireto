@@ -6,15 +6,17 @@ setup-localenv:
 shutdown-prod:
 	cd terraform && terraform destroy && cd ..
 
-startup-prod:
+create-prod:
 	cd terraform && terraform apply && cd ..
 
-setup-prod:
+config-prod:
 	cd ansible && \
 	ansible-galaxy install -r requirements.yml -p roles && \
 	ansible-playbook -i inventory/digital_ocean.py playbook.yml && \
 	cd ..
-
+	
+setup-prod: create-prod config-prod
+	
 startup-dev:
 	docker-compose up -d 
 

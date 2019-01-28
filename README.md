@@ -1,6 +1,8 @@
 # Passei Direto
 #### Projeto - Vaga Infra / Devops
 
+## O Desafio
+
 O seu projeto consiste em preparar o provisionamento do ambiente para rodar uma aplicação. A aplicação é uma **API** implementada com ​**Node.js​ + ​MySQL​**. É uma API para criação e
 consulta de anotações. O código fonte está na pasta `codigo-fonte`.
 
@@ -30,3 +32,56 @@ No final, avalie o funcionamento do ambiente, testando as operações de:
 Ao terminar enviar por email o link do ​Github ​do projeto. 
 
 Boa sorte, e nos vemos em breve.
+
+## Pré-requisitos
+
+* Ansible
+* Terraform
+* Docker
+* docker-compose
+* Make
+* Python Requests lib (Para utilizar o inventario dinamico da Digital Ocean)
+
+Caso voce esteja utilizando um sistema operacional MacOS, para instalar o Ansible, Terraform e a lib `requests` do python basta executar o seguinte comando:
+
+```make
+make setup-localenv
+```
+
+## Dependencias
+
+* Cadastrar quais API's tokens sao necessarias pro projeto funcionar de boa.
+
+## Desenvolvimento
+
+Nosso ambiente de desenvolvimento esta sendo montado pelo [docker-compose](./docker-compose.yml) inclusive todas as variaveis estao nesse arquivo para melhor entendimento de novos membros do time.
+
+Para executar a **criacao** do ambiente e acessar a aplicacao, execute o seguinte comando:
+
+```make
+make startup-dev
+```
+Esse comando pode levar algum tempo, principalmente se for a primeira vez que e executado, ja que ele precisa fazer download de algumas imagens docker.
+
+
+Caso queira **desligar** o ambiente, simplesmente execut:
+
+```make
+make shutdown-dev
+```
+
+## Producao
+
+Para configurar nosso ambiente de producao, estamos utilizando o `terraform` para criar toda a infraestrutura necessaria e o `ansible` para fazer a configuracao:
+
+Configuradas as variaveis de ambientes necessarias, para **criar** o ambiente simplesmente execute:
+
+```make
+make setup-prod
+```
+
+Para **deletar** o ambiente execute:
+
+```make
+make shutdown-prod
+```
