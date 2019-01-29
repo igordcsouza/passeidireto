@@ -96,8 +96,4 @@ make shutdown-prod
 
 ## Ansible Vault
 
-Ao executar o ansible vai ser pedido uma senha do `ansible-vault` e essa é `passeidireto`.
-
-## Problemas conhecidos (Melhorias futuras)
-
-* Existe um bug que algumas vezes ao executar pela primeira vez a role de docker ela trava na instalação. Necessitando que seja executada novamente.
+Ao executar o ansible sera pedido uma senha do `ansible-vault` e essa é `passeidireto`.
