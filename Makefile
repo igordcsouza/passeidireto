@@ -8,6 +8,7 @@ shutdown-prod:
 
 create-prod:
 	cd terraform && \
+	terraform init && \
 	terraform apply && \
 	cd .. && \
 	sleep 30
