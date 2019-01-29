@@ -35,6 +35,8 @@ services:
       - db
     environment:
       DATABASE_HOST: 'db'
+      DATABASE_USER: 'notes-api'
+      DATABASE_PASS: 'notes-api'
   proxy:
     image: nginx:latest
     volumes:
