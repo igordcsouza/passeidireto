@@ -7,7 +7,10 @@ shutdown-prod:
 	cd terraform && terraform destroy && cd ..
 
 create-prod:
-	cd terraform && terraform apply && cd ..
+	cd terraform && \
+	terraform apply && \
+	cd .. && \
+	sleep 30
 
 config-prod:
 	cd ansible && \
@@ -22,3 +25,13 @@ startup-dev:
 
 shutdown-dev:
 	docker-compose down
+
+release-app:
+	cd codigo-fonte/app/ && \
+	docker build -t igordcsouza/pdapp && \
+	cd ../../
+
+release-nginx:
+	cd codigo-fonte/nginx/ && \
+	docker build -t igordcsouza/pdnginx && \
+	cd ../../
