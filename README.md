@@ -58,6 +58,8 @@ Voce vai precisar adicionar o seu token da digital ocean a 2 variaveis diferente
 * AWS_ACCESS_KEY_ID (Precisa ter acesso de escrita no S3)
 * AWS_SECRET_ACCESS_KEY (Precisa ter acesso de escrita no S3)
 
+Voce precisa tambem cadastrar sua `ssh key` na sua conta da `digital ocean` e alterar a variavel `default_ssh_keys` no arquivo [vars.tf](./terraform/vars.tf). Deixei  dois `fingerprint` como exemplo, basta substituir ambos pela sua chave.
+
 ## Desenvolvimento
 
 Nosso ambiente de desenvolvimento esta sendo montado pelo [docker-compose](./docker-compose.yml) inclusive todas as variaveis estao nesse arquivo para melhor entendimento de novos membros do time.
