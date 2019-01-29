@@ -97,3 +97,10 @@ make shutdown-prod
 ## Ansible Vault
 
 Ao executar o ansible sera pedido uma senha do `ansible-vault` e essa é `passeidireto`.
+
+## Videos
+
+Caso queira ver o script sendo executado sem criar tokens ou instalar coisas na sua maquina, apenas assista os videos abaixo:
+
+* [Setup do ambiente de DEV](https://asciinema.org/a/lSZOV063e7SR0O0Jxu5SPKPaX)
+* [Setup do ambiente de PROD](https://asciinema.org/a/VzXRJVtW1rIUGYExDt8UTQ6AW)
