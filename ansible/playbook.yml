@@ -1,24 +1,60 @@
 ---
-- hosts: baseline
-  tasks:
-  - name: upgrade all packages
-    yum:
-      name: git
-      state: latest
-
-- hosts: webapp
-  roles:
-    - geerlingguy.nginx
-    - geerlingguy.nodejs
-  vars:
-    
-
 - hosts: database
   become: yes
   roles:
     - geerlingguy.mysql
   vars:
     mysql_user_home: /root
-    mysql_user_name: 'notes-api'
-    mysql_user_password: 'notes-api'
+    mysql_user_name: root
+    mysql_user_password: root
     mysql_root_password_update: false
+    mysql_users:
+    - name: "{{ app_mysql_user }}"
+      host: "%"
+      password: "{{ app_mysql_pass }}"
+      priv: "*.*:ALL"
+      state: present
+  tasks:
+  - name: Copy 
+    copy:
+      src: ./file/database_schema.sql
+      dest: /tmp/database_schema.sql
+  - name: Import
+    mysql_db:
+      name: notes
+      state: import
+      target: /tmp/database_schema.sql
+    ignore_errors: yes
+
+- hosts: webapp
+  roles:
+    - geerlingguy.repo-epel
+    - geerlingguy.pip
+    - geerlingguy.docker
+  vars:
+    pip_install_packages:
+      - name: docker
+  tasks:
+  - name: Start the application container.
+    docker_container:
+      name: webapp
+      image: igordcsouza/pdapp
+      state: started
+      restart: yes
+      ports:
+      - "8080:8080"
+      env:
+        DATABASE_HOST: "{{ hostvars[groups['database'][0]]['inventory_hostname']}}"
+        DATABASE_PASS: "{{ app_mysql_user }}"
+        DATABASE_USER: "{{ app_mysql_pass }}"
+  - name: Start the nginx container.
+    docker_container:
+      name: webproxy
+      image: igordcsouza/pdnginx
+      state: started
+      restart: yes
+      ports:
+      - "80:80"
+      - "443:443"    
+      links:
+        - "webapp:app"
