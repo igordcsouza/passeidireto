@@ -18,7 +18,7 @@ config-prod:
 	ansible-playbook -i inventory/digital_ocean.py playbook.yml --ask-vault-pass && \
 	cd ..
 	
-setup-prod: create-prod config-prod
+startup-prod: create-prod config-prod
 	
 startup-dev:
 	docker-compose up -d 
