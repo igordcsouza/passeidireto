@@ -15,7 +15,7 @@ create-prod:
 config-prod:
 	cd ansible && \
 	ansible-galaxy install -r requirements.yml -p roles && \
-	ansible-playbook -i inventory/digital_ocean.py playbook.yml && \
+	ansible-playbook -i inventory/digital_ocean.py playbook.yml --ask-vault-pass && \
 	cd ..
 	
 setup-prod: create-prod config-prod
