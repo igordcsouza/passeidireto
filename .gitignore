@@ -2,3 +2,4 @@
 ansible/roles
 *.tfstate
 *.tfstate.backup
+*.playbook.retry
