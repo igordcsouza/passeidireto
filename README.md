@@ -85,3 +85,7 @@ Para **deletar** o ambiente execute:
 ```make
 make shutdown-prod
 ```
+
+## Problemas conhecidos (Melhorias futuras)
+
+* Existe um bug que algumas vezes ao executar pela primeira vez a role de docker ela trava na instalação. Necessitando que seja executada novamente.
