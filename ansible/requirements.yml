@@ -1,3 +1,4 @@
 - name: geerlingguy.mysql
-- name: geerlingguy.nodejs
-- name: geerlingguy.nginx
+- name: geerlingguy.pip
+- name: geerlingguy.docker
+- name: geerlingguy.repo-epel
