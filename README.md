@@ -50,10 +50,13 @@ make setup-localenv
 
 ## Dependencias
 
+Crie um bucket na aws! No meu caso criei o com nome `passeidireto-challenge`. Depois altere no arquivo [backend.tf](./terraform/backend.tf)
 Voce vai precisar adicionar o seu token da digital ocean a 2 variaveis diferentes, pois o `terraform` busca em uma e o arquivo de inventario dinamico em outra. Infelizmente :/ 
 
 * DIGITALOCEAN_TOKEN
 * DO_API_TOKEN
+* AWS_ACCESS_KEY_ID (Precisa ter acesso de escrita no S3)
+* AWS_SECRET_ACCESS_KEY (Precisa ter acesso de escrita no S3)
 
 ## Desenvolvimento
 
@@ -96,4 +99,3 @@ Ao executar o ansible vai ser pedido uma senha do `ansible-vault` e essa é `pas
 ## Problemas conhecidos (Melhorias futuras)
 
 * Existe um bug que algumas vezes ao executar pela primeira vez a role de docker ela trava na instalação. Necessitando que seja executada novamente.
-* Arquivo de estado local (Foi proposital não utilizar o remote, para evitar a necessidade de mais chaves para fazer o código funcionar)
