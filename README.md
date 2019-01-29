@@ -50,7 +50,10 @@ make setup-localenv
 
 ## Dependencias
 
-* Cadastrar quais API's tokens sao necessarias pro projeto funcionar de boa.
+Voce vai precisar adicionar o seu token da digital ocean a 2 variaveis diferentes, pois o `terraform` busca em uma e o arquivo de inventario dinamico em outra. Infelizmente :/ 
+
+* DIGITALOCEAN_TOKEN
+* DO_API_TOKEN
 
 ## Desenvolvimento
 
